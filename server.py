@@ -1,6 +1,7 @@
 from flask import Flask
 import requests
 
+
 app = Flask(__name__)
 
 API_URL = 'https://financialmodelingprep.com//api/v3/stock/real-time-price/{ticker}'
