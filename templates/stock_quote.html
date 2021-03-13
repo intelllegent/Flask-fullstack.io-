@@ -1,0 +1,12 @@
+{% extends "base_layout.html" %}
+{% block title %} {{ticker}} Stock Quote {% endblock %}
+
+{% block content %}
+<div>
+    <div class="col-sm">
+        <h1 class="mb-3">{{ ticker }}</h1>
+        <hr />
+        <h2> Price: ${{ stock_price }} </h2>
+    </div>
+</div>
+{% endblock %}
