@@ -1,23 +1,10 @@
 from flask import Flask, render_template
-import requests
-
+from blueprints.stock import stock
 
 app = Flask(__name__)
 
-API_URL = 'https://financialmodelingprep.com//api/v3/stock/real-time-price/{ticker}'
 
-
-def fetch_price(ticker):
-    data = requests.get(API_URL.format(ticker=ticker.upper()),
-                        params={'apikey': 'demo'}).json()
-    return data["price"]
-
-
-@app.route('/stock/<ticker>')
-def stock(ticker):
-    price = fetch_price(ticker)
-    return render_template('stock_quote.html', ticker=ticker.upper(), stock_price=price)
-
+app.register_blueprint(stock)
 
 @app.route('/')
 def home_page():
@@ -25,4 +12,4 @@ def home_page():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
